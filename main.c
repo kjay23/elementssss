@@ -3,27 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 
-#define LEFT(str, w) \
-    ({int m = w + strlen(str); m % 2 ? (m + 1) / 2 : m / 2;})
 
-#define RIGHT(str, w) \
-({ int m = w - strlen(str); m % 2 ? (m - 1) / 2 : m / 2; })
-
-#define STR_CENTER(str, width) \
-    LEFT(str, width), str, RIGHT(str, width), ""
-
-#define PRINTF_CENTER(width, start, fmt, end, ...) ({ \
-    int n = snprintf(NULL, 0, fmt, __VA_ARGS__);     \
-    int m = width - n;                               \
-    int left = m % 2 ? (m + 1) / 2 : m / 2;          \
-    int right = m % 2 ? (m - 1) / 2 : m / 2;         \
-    printf(start "%*s" fmt "%*s" end, left, "",      \
-           __VA_ARGS__, right, "");                  \
-})
-
-#define MYFORMAT_CENTER(width, fmt, ...)  \
-    PRINTF_CENTER(40, "[", fmt  , "]\n", __VA_ARGS__)
-    //para na ma center ang texts, duh
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -58,8 +38,54 @@ void inputIndividualInfo(struct Individual *individual) {
     scanf("%s", individual->group);
 }
 
+void displayChemicalGroup(int choice) {
+    switch (choice) {
+        case 1:
+            printf("\n\nHalogens\n");
+            printf("1. Fluorine (F)\n");
+            printf("2. Chlorine (Cl)\n");
+            printf("3. Bromine (Br)\n");
+            printf("4. Iodine (I)\n");
+            printf("5. Astatine (At)\n");
+            break;
+        case 2:
+            printf("\n\nNoble Gases\n");
+            printf("1. Helium (He)\n");
+            printf("2. Neon (Ne)\n");
+            printf("3. Argon (Ar)\n");
+            printf("4. Krypton (Kr)\n");
+            printf("5. Xenon (Xe)\n");
+            break;
+        case 3:
+            printf("\n\nMetalloid\n");
+            printf("1. Boron (B)\n");
+            printf("2. Silicon (Si)\n");
+            printf("3. Germanium (Ge)\n");
+            printf("4. Arsenic (As)\n");
+            printf("5. Antimony (Sb)\n");
+            break;
+        case 4:
+            printf("\n\nNon-Metals\n");
+            printf("1. Hydrogen (H)\n");
+            printf("2. Carbon (C)\n");
+            printf("3. Nitrogen (N)\n");
+            printf("4. Oxygen (O)\n");
+            printf("5. Sulfur (S)\n");
+            break;
+        case 5:
+            printf("\n\nAlkali Earth Metals\n");
+            printf("1. Beryllium (Be)\n");
+            printf("2. Magnesium (Mg)\n");
+            printf("3. Calcium (Ca)\n");
+            printf("4. Strontium (Sr)\n");
+            printf("5. Barium (Ba)\n");
+            break;
+        default:
+            printf("ERROR!\n");
+    }
+}
 int main(int argc, char const *argv[]) {
-    printf("%*s%*s\n\n", STR_CENTER(" PERIODIC TABLE INFORMATION ", 100));
+    printf("\t\t\t\t\tPERIODIC TABLE INFORMATION ");
     printf("\n");
     printf("\t\t\t\t\tGROUP MEMBERS\n");
     printf("1. KLEVIN JAY A. PORIO\n");
@@ -81,11 +107,7 @@ int main(int argc, char const *argv[]) {
         case 1:
             {
                 struct Individual individual;
-
-                // Prompt user to input individual information
                 inputIndividualInfo(&individual);
-
-                // Display the entered information
                 printf("\nName: %s\n", individual.name);
                 printf("Symbol: %s\n", individual.symbol);
                 printf("Atomic Mass: %.2f\n", individual.atomic_mass);
@@ -93,7 +115,16 @@ int main(int argc, char const *argv[]) {
             }
             break;
         case 2:
-            printf("ambot");
+            printf("\n\nPlease Select Chemical Group Block:\n\n");
+            printf("1. Halogens\n");
+            printf("2. Noble Gases\n");
+            printf("3. Metalloid\n");
+            printf("4. Non-Metals\n");
+            printf("5. Alkali Earth Metals\n\n");
+
+            int groupChoice;
+            scanf("%d", &groupChoice);
+            displayChemicalGroup(groupChoice);
             break;
         case 0:
             printf("NO DISPLAY");
@@ -108,7 +139,6 @@ int main(int argc, char const *argv[]) {
     scanf(" %c", &returnToMain);
 
     if (returnToMain == 'Y' || returnToMain == 'y') {
-        // Return to main menu
         clear_screen();
         main(argc, argv);
     }
