@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1711767130 source:c:\users\jay\desktop\elementsss\main.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<string.h>
+	<Windows.h>
+
+1711764973 source:c:\users\jay\desktop\elementsss\group_block.c
+
+1711765972 source:c:\users\jay\desktop\elementsss\individual.c
+
