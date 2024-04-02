@@ -40,7 +40,7 @@ void individual_info(struct Individual *individual) {
 }
 
 
-// 2. chemical group block
+// 2. chemical group block: function kay group_block
 void group_block(int choice) {
     switch (choice) {
         case 1:
@@ -84,7 +84,10 @@ void group_block(int choice) {
             printf("5. Barium (Ba)\n");
             break;
         default:
-            printf("ERROR!\n");
+            printf("\n\nERROR!\n");
+            sleep(2);
+            clear_screen();
+            return main();
     }
 }
 
@@ -139,7 +142,7 @@ int main(int argc, char const *argv[]) {
             return 0;
         default:
             printf("ERROR!\n");
-            return 1;
+            return main;
     }
 
 
