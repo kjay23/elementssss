@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-
+// pre-processors stuffs
 
 
 #ifdef _WIN32
@@ -25,7 +25,8 @@ struct Individual {
     char group[20];
 };
 
-void inputIndividualInfo(struct Individual *individual) {
+// 1. input sa individual information: function kay individual_info
+void individual_info(struct Individual *individual) {
     printf("\n\nInput Atomic Number: ");
     scanf("%s", individual->atom);
     printf("Enter name: ");
@@ -38,7 +39,9 @@ void inputIndividualInfo(struct Individual *individual) {
     scanf("%s", individual->group);
 }
 
-void displayChemicalGroup(int choice) {
+
+// 2. chemical group block
+void group_block(int choice) {
     switch (choice) {
         case 1:
             printf("\n\nHalogens\n");
@@ -84,16 +87,19 @@ void displayChemicalGroup(int choice) {
             printf("ERROR!\n");
     }
 }
+
+// main
+
 int main(int argc, char const *argv[]) {
-    printf("\t\t\t\t\tPERIODIC TABLE INFORMATION ");
+    printf("\t\t\t\t\tPERIODIC TABLE INFORMATION\n");
     printf("\n");
     printf("\t\t\t\t\tGROUP MEMBERS\n");
-    printf("1. KLEVIN JAY A. PORIO\n");
-    printf("2. SHERLYN KATE C. YPO\n");
-    printf("3. JHUDIEL LEDENIO\n");
-    printf("4. MARIA CLARENCE F. CASIPE\n");
-    printf("5. SHERIFER W. ARNADO\n");
-    printf("6. JANJAN A. EGOC\n");
+    printf("NAME: KLEVIN JAY A. PORIO\n");
+    printf("NAME: SHERLYN KATE C. YPO\n");
+    printf("NAME: JHUDIEL LEDENIO\n");
+    printf("NAME: MARIA CLARENCE F. CASIPE\n");
+    printf("NAME: SHERIFER W. ARNADO\n");
+    printf("NAME: JANJAN A. EGOC\n");
 
     int choice;
     printf("\n");
@@ -102,17 +108,19 @@ int main(int argc, char const *argv[]) {
     printf("1. INDIVIDUAL INFORMATION\n");
     printf("2. CHEMICAL GROUP BLOCK\n\n");
 
+
+// submain
     scanf("%d", &choice);
     switch (choice) {
-        case 1:
-            {
-                struct Individual individual;
-                inputIndividualInfo(&individual);
-                printf("\nName: %s\n", individual.name);
-                printf("Symbol: %s\n", individual.symbol);
-                printf("Atomic Mass: %.2f\n", individual.atomic_mass);
-                printf("Chemical Group: %s\n", individual.group);
-            }
+        case 1: {
+            struct Individual individual;
+            individual_info(&individual);
+            printf("\nName: %s\n", individual.name);
+            printf("Symbol: %s\n", individual.symbol);
+            printf("Atomic Mass: %.2f\n", individual.atomic_mass);
+            printf("Chemical Group: %s\n", individual.group);
+            break;
+        }
             break;
         case 2:
             printf("\n\nPlease Select Chemical Group Block:\n\n");
@@ -124,7 +132,7 @@ int main(int argc, char const *argv[]) {
 
             int groupChoice;
             scanf("%d", &groupChoice);
-            displayChemicalGroup(groupChoice);
+            group_block(groupChoice);
             break;
         case 0:
             printf("NO DISPLAY");
@@ -134,6 +142,8 @@ int main(int argc, char const *argv[]) {
             return 1;
     }
 
+
+// confirmation para return to main
     char returnToMain;
     printf("\n\nReturn to main menu? (Y/N): ");
     scanf(" %c", &returnToMain);
