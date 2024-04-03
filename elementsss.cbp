@@ -31,14 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="group_block.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="group_block.h" />
-		<Unit filename="individual.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="individual.h" />
+
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
