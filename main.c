@@ -28,15 +28,62 @@ struct Individual {
 // 1. input sa individual information: function kay individual_info
 void individual_info(struct Individual *individual) {
     printf("\n\nInput Atomic Number: ");
-    scanf("%s", individual->atom);
-    printf("Enter name: ");
-    scanf("%s", individual->name);
-    printf("Enter symbol: ");
-    scanf("%s", individual->symbol);
-    printf("Enter atomic mass: ");
-    scanf("%f", &(individual->atomic_mass));
-    printf("Enter chemical group: ");
-    scanf("%s", individual->group);
+
+    int elementChoice;
+    scanf("%d", &elementChoice);
+    switch (elementChoice) {
+        case 1:
+            strcpy(individual->name, "Hydrogen");
+            strcpy(individual->symbol, "H");
+            individual->atomic_mass = 1.008;
+            strcpy(individual->group, "Non-Metals");
+            break;
+        case 2:
+            strcpy(individual->name, "Helium");
+            strcpy(individual->symbol, "He");
+            individual->atomic_mass = 4.0026;
+            strcpy(individual->group, "Noble Gases");
+            break;
+        case 3:
+            strcpy(individual->name, "Lithium");
+            strcpy(individual->symbol, "Li");
+            individual->atomic_mass = 6.94;
+            strcpy(individual->group, "Alkali Metals");
+            break;
+        case 4:
+            strcpy(individual->name, "Beryllium");
+            strcpy(individual->symbol, "Be");
+            individual->atomic_mass = 9.0122;
+            strcpy(individual->group, "Alkali Earth Metals");
+            break;
+        case 5:
+            strcpy(individual->name, "Boron");
+            strcpy(individual->symbol, "B");
+            individual->atomic_mass = 10.81;
+            strcpy(individual->group, "Metalloid");
+            break;
+        case 6:
+            strcpy(individual->name, "Lithium");
+            strcpy(individual->symbol, "Li");
+            individual->atomic_mass = 6.94;
+            strcpy(individual->group, "Alkali Metals");
+            break;
+        case 7:
+            strcpy(individual->name, "Fluorine");
+            strcpy(individual->symbol, "F");
+            individual->atomic_mass = 18.998;
+            strcpy(individual->group, "Halogens");
+            break;
+        case 8:
+            strcpy(individual->name, "Helium");
+            strcpy(individual->symbol, "He");
+            individual->atomic_mass = 4.0026;
+            strcpy(individual->group, "Noble Gases");
+            break;
+        default:
+            printf("Invalid choice\n");
+            break;
+    }
 }
 
 
